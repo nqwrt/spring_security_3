@@ -28,5 +28,6 @@
     [<a href="<c:url value="/user/userHome" />">유저 홈</a>]
     [<a href="<c:url value="/admin/adminHome" />">관리자 홈</a>]
 </h3>
+
 </body>
 </html>
