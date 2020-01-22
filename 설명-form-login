@@ -1,0 +1,17 @@
+ <form-login login-page="/login/loginForm"
+                    default-target-url="/"
+                    authentication-failure-url="/login/loginForm?error"
+                    username-parameter="id"
+                    password-parameter="password" />
+  
+ form-login 태그 설명                  
+
+ login-page :  ​로그인 인증을 처리할 주소는 /login/loginForm 이다.
+ default-target-url : 로그인이 완료 되면  default-target-url="/" 로 이동.
+ authentication-failure-url : 인증 실패시 /login/loginForm?error 가야 하는 주소.
+ username-parameter : 로그인 폼에 아이디 입력 필드에 사용될 name 입니다. 기본값은 "username".
+ password-parameter : 로그인 폼에 비밀번호 입력 필드에 사용될 name 입니다. 기본값은 "password" 입니다.
+
+
+
+               

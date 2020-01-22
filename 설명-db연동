@@ -1,0 +1,33 @@
+JDBC를 이용한 인증/권한 처리
+
+JDBC를 이용하여 인증/권한 체크 방식은 크게 두가지임
+1)지정된 형식으로 테이블 생성 방법
+2)기존에 작성된 데이터 베이스 연동 방법
+
+1번 방식의 경우 : 지정된 형식으로 table 작성후 아래와 같이 데이터 베이스만 연동 시켜도 됨.
+
+쿼리문에 사용되는 userName, password, enabled, authority는 Spring에서 지정된 컬럼명
+
+   <authentication-manager>
+        <authentication-provider>
+        <jdbc-user-service 
+            data-source-ref="dataSource"
+         />
+        </authentication-provider>
+    </authentication-manager>
+    
+ 2. 기존 작성된 데이터베이스를 연동 방식
+ 
+users-by-username-query를 통해 ID에 따른 비번 일치여부를 확인
+authorities-by-username-query에서 로그인에 성공한 사용자의 권한을 확인
+ 
+ 위의 두 쿼리를 활용하는 형태임
+ 예)scott 의 기본적인 emp 테이블을 활용한 예
+ 
+  users-by-username-query="select ename, empno, 1  from emp where ename = ?"
+  authorities-by-username-query="select ename,case when job='MANAGER' then 'ROLE_ADMIN' else  'ROLE_USER' end authority from emp where ename=?"            
+       
+  users-by-username-query="select ename, empno, 1  from emp where ename = ?"
+  authorities-by-username-query="select ename,case when job='MANAGER' then 'ROLE_ADMIN' else  'ROLE_USER' end authority from emp where ename=?"            
+
+                 
